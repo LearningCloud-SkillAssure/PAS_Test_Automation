@@ -67,7 +67,7 @@ namespace PAS.Test.Automation.Functional.Web.Components
                 Layout = GetPatternLayout(),
                 Threshold = Level.All,
                 AppendToFile = true,
-                File = ConfigurationManager.AppSettings["LogFilePath"] + "/" + "Logs.log"
+                File = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\", ConfigurationManager.AppSettings["LogFilePath"])) + "\\" + "Logs.log"
             };
             fileAppender.ActivateOptions();
             return fileAppender;
@@ -81,7 +81,7 @@ namespace PAS.Test.Automation.Functional.Web.Components
                 Layout = GetPatternLayout(),
                 Threshold = Level.All,
                 AppendToFile = true,
-                File = ConfigurationManager.AppSettings["LogFilePath"] + "/" + "RollingLogs.log",
+                File = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\", ConfigurationManager.AppSettings["LogFilePath"])) + "\\" + "RollingLogs.log",
                 MaximumFileSize = "1MB",
                 MaxSizeRollBackups = 15
             };
