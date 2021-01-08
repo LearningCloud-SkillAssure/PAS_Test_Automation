@@ -12,7 +12,12 @@ namespace PAS.Test.Automation.Functional.Web.Components
     {
         public static void TakeScreenshot(IWebDriver driver)
         {
-            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(ConfigurationManager.AppSettings["ScreenshotPath"]+"/"+"Shot",ScreenshotImageFormat.Png);
+            //((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(ConfigurationManager.AppSettings["ScreenshotPath"]+"/"+"Shot",ScreenshotImageFormat.Png);
+            ((ITakesScreenshot)driver)
+                .GetScreenshot()
+            //    .SaveAsFile(ConfigurationManager.AppSettings["ScreenshotPath"]+"/"+"Shot",ScreenshotImageFormat.Png);
+            .SaveAsFile((Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\", ConfigurationManager.AppSettings["ScreenShotPath"]))) + "\\"+"Shot.png", ScreenshotImageFormat.Png);
+            //.SaveAsFile(@"Resources/Screenshots" + "/" + "Shot", ScreenshotImageFormat.Png);
         }
     }
 }
